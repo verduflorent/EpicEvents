@@ -1,0 +1,38 @@
+[tool.poetry]
+name = "epicevents"
+version = "0.1.0"
+description = "Secure command-line CRM for Epic Events"
+authors = ["Florent Verdu"]
+readme = "README.md"
+packages = [{include = "epicevents", from = "src"}]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<4.0"
+sqlalchemy = "^2.0"
+psycopg = {version = "^3.2", extras = ["binary"]}
+python-dotenv = "^1.0"
+click = "^8.1"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3"
+pytest-cov = "^6.0"
+ruff = "^0.9"
+black = "^25.1"
+
+[tool.poetry.scripts]
+epicevents = "epicevents.cli:cli"
+
+[build-system]
+requires = ["poetry-core>=2.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.black]
+line-length = 88
+target-version = ["py310"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
