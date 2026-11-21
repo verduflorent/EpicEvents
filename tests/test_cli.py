@@ -14,8 +14,9 @@ def test_cli_help():
 
 
 def test_db_check_success():
-    with patch("epicevents.cli.make_engine") as engine, patch(
-        "epicevents.cli.check_connection", return_value=True
+    with (
+        patch("epicevents.cli.make_engine") as engine,
+        patch("epicevents.cli.check_connection", return_value=True),
     ):
         result = CliRunner().invoke(cli, ["db-check"])
     assert result.exit_code == 0
