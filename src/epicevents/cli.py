@@ -23,7 +23,7 @@ def db_check() -> None:
                 raise click.ClickException("Database check failed.")
         finally:
             engine.dispose()
-    except (RuntimeError, SQLAlchemyError) as exc:
+    except (RuntimeError, SQLAlchemyError):
         # Do not print driver exceptions: they may contain connection details.
         raise click.ClickException(
             "Database unavailable. Check DATABASE_URL and PostgreSQL."
