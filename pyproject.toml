@@ -23,10 +23,10 @@ alembic = "^1.14"
 argon2-cffi = "^23.1"
 
 [tool.poetry.group.dev.dependencies]
-pytest = "^8.3"
+pytest = "^9.0"
 pytest-cov = "^6.0"
 ruff = "^0.9"
-black = "^25.1"
+black = "^26.10"
 
 [build-system]
 requires = ["poetry-core>=2.0.0"]
