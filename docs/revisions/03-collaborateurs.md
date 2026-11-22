@@ -1,18 +1,25 @@
-# Fiche J3 — Collaborateurs et rôles (en cours)
+# Fiche J3 — Collaborateurs et rôles
 
-## L'idée
-Un collaborateur possède un compte, un département et un mot de passe protégé. Les trois départements sont gestion, commercial et support.
+## Ce que nous avons construit
+Epic Events possède maintenant des fonctions Python pour créer, modifier et supprimer des collaborateurs. Chaque collaborateur appartient à un département : `gestion`, `commercial` ou `support`. La première commande accessible depuis le terminal est `bootstrap-manager`, qui crée le premier responsable gestion sur une installation locale de confiance.
 
-## Pourquoi hacher les mots de passe ?
-Nous ne stockons jamais le mot de passe original. Argon2id transforme le mot de passe en une empreinte difficile à inverser, avec un sel aléatoire. Deux utilisateurs ayant le même mot de passe auront normalement des empreintes différentes.
+## Les mots de passe
+Le mot de passe original n'est pas enregistré. Argon2id calcule une empreinte avec un sel aléatoire : même avec deux mots de passe identiques, les empreintes diffèrent. La fonction `verify_password` permet de vérifier un mot de passe lors d'une future connexion. Le programme exige au moins 12 caractères.
 
-## Pourquoi séparer les permissions ?
-Créer un compte n'est pas la même chose que se connecter. Au J3, les services vérifient le département de l'acteur. Au J4, nous construirons l'authentification qui prouvera qui est cet acteur.
+## La différence entre rôle et authentification
+Le département détermine ce qu'un collaborateur est autorisé à faire. Les fonctions de gestion vérifient que l'acteur appartient à `gestion`. En revanche, l'identité de cet acteur n'est pas encore prouvée par une connexion : ce sera l'objet du J4. Pour cette raison, nous n'exposons pas encore les opérations administratives de création/modification/suppression dans la CLI.
 
-## Le premier compte
-Un premier compte gestion doit être créé dans une procédure locale de confiance. L'initialisation n'est autorisée que si aucun employé n'existe. Ne pas exposer cette opération dans une interface publique.
+## Premier compte et protection
+La commande `poetry run epicevents bootstrap-manager` demande un nom, un email et un mot de passe masqué. Elle ne fonctionne que lorsqu'aucun collaborateur n'existe. Les départements sont créés si nécessaire. Sur la base locale, le premier compte gestion a été créé et vérifié sans afficher l'empreinte.
 
-## À revoir après validation
-- Démontrer création, modification, changement de département et suppression contrôlée.
-- Expliquer l'intérêt des tests et des contraintes SQL.
-- Distinguer authentification et autorisation.
+## Tests et limites
+16 tests automatisés ont réussi au total, dont six pour le J3 : sel et vérification des mots de passe, longueur minimale, initialisation unique, opérations autorisées, refus des opérations hors gestion, refus des doublons et de l'auto-suppression. Ruff et Black sont validés.
+
+Les contraintes de clés étrangères protègent les collaborateurs déjà référencés par des clients ou contrats. L'authentification persistante, les sessions et le contrôle des droits à l'entrée de la CLI appartiennent au J4.
+
+## Questions pour la soutenance
+1. Pourquoi stocker une empreinte plutôt qu'un mot de passe ?
+2. Pourquoi deux empreintes d'un même mot de passe peuvent-elles être différentes ?
+3. Quelle différence entre authentification et autorisation ?
+4. Pourquoi l'initialisation du premier gestionnaire n'est-elle possible qu'une fois ?
+5. Pourquoi séparer les opérations métier de l'interface CLI ?
