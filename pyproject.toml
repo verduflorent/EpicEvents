@@ -1,9 +1,15 @@
-[tool.poetry]
+[project]
 name = "epicevents"
 version = "0.1.0"
 description = "Secure command-line CRM for Epic Events"
-authors = ["Florent Verdu"]
+authors = [{name = "Florent Verdu"}]
 readme = "README.md"
+requires-python = ">=3.10,<4.0"
+
+[project.scripts]
+epicevents = "epicevents.cli:cli"
+
+[tool.poetry]
 packages = [{include = "epicevents", from = "src"}]
 
 [tool.poetry.dependencies]
@@ -18,9 +24,6 @@ pytest = "^8.3"
 pytest-cov = "^6.0"
 ruff = "^0.9"
 black = "^25.1"
-
-[tool.poetry.scripts]
-epicevents = "epicevents.cli:cli"
 
 [build-system]
 requires = ["poetry-core>=2.0.0"]
