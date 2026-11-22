@@ -24,12 +24,12 @@ Validation : installation reproductible, connexion fonctionnelle, aucun secret s
 
 ### J2 — Modélisation et migrations
 Branche : `feat/database-models`
-- [ ] Modéliser `Role/Department`, `Employee`, `Client`, `Contract`, `Event`.
-- [ ] Définir clés, cardinalités, contraintes et relations ORM.
-- [ ] Couvrir champs clients (nom, email, téléphone, entreprise, dates, commercial), contrats (montants, statut, date, client, commercial), événements (contrat, nom, dates, lieu, participants, notes, support).
-- [ ] Initialiser Alembic, créer et appliquer une migration.
-- [ ] Produire le diagramme ERD et tester les relations.
-- [ ] Fiche `docs/revisions/02-modelisation.md`.
+- [x] Modéliser `Role/Department`, `Employee`, `Client`, `Contract`, `Event`.
+- [x] Définir clés, cardinalités, contraintes et relations ORM.
+- [x] Couvrir champs clients (nom, email, téléphone, entreprise, dates, commercial), contrats (montants, statut, date, client, commercial), événements (contrat, nom, dates, lieu, participants, notes, support).
+- [x] Initialiser Alembic, créer et appliquer une migration.
+- [x] Produire le diagramme ERD et tester les relations.
+- [x] Fiche `docs/revisions/02-modelisation.md`.
 Validation : schéma créé par migration, relations et contraintes testées, ERD à jour.
 
 ### J3 — Collaborateurs et rôles
@@ -114,7 +114,7 @@ Validation : dépôt public/partageable, installation documentée et démo repro
 | Jalon | Branche | Statut | Commit/PR | Fiche |
 |---|---|---|---|---|
 | J1 | `chore/setup-project` | Validé localement, fusion à faire | `7ac89cf` + correctifs | `docs/revisions/01-environnement.md` |
-| J2 | `feat/database-models` | À faire | — | — |
+| J2 | `feat/database-models` | Validé localement, fusion à faire | `5fc104b` + correctifs | `docs/revisions/02-modelisation.md` |
 | J3 | `feat/user-management` | À faire | — | — |
 | J4 | `feat/authentication` | À faire | — | — |
 | J5 | `feat/read-operations` | À faire | — | — |
@@ -122,6 +122,9 @@ Validation : dépôt public/partageable, installation documentée et démo repro
 | J7 | `feat/cli-interface` | À faire | — | — |
 | J8 | `feat/security-logging` | À faire | — | — |
 | J9 | `docs/final-delivery` | À faire | — | — |
+
+## Vigilance sécurité
+- GitHub signale 3 alertes Dependabot sur `main` (2 élevées, 1 modérée) au moment de la validation J2 ; analyser les dépendances concernées et corriger avant livraison.
 
 ## Références
 - `Backend sécurisé — Cahier des charges [2.0].pdf`

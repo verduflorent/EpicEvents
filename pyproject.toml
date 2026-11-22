@@ -19,6 +19,7 @@ sqlalchemy = "^2.0"
 psycopg = {version = "^3.2", extras = ["binary"]}
 python-dotenv = "^1.0"
 click = "^8.1"
+alembic = "^1.14"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3"
