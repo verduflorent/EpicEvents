@@ -34,13 +34,13 @@ Validation : schéma créé par migration, relations et contraintes testées, ER
 
 ### J3 — Collaborateurs et rôles
 Branche : `feat/user-management`
-- [ ] Définir les trois départements : gestion, commercial, support.
-- [ ] Créer le modèle de comptes avec identifiant, nom, email, rôle relationnel et mot de passe haché/salé.
-- [ ] Implémenter création, modification, changement de rôle et suppression contrôlée des collaborateurs (gestion uniquement).
-- [ ] Prévoir l'initialisation sécurisée d'un premier compte gestion.
-- [ ] Tester validation, unicité, hachage et restrictions.
-- [ ] Fiche `docs/revisions/03-collaborateurs.md`.
-Validation : cycle de vie des comptes et protections vérifiés.
+- [x] Définir les trois départements : gestion, commercial, support.
+- [x] Créer le modèle de comptes avec identifiant, nom, email, rôle relationnel et mot de passe haché/salé.
+- [x] Implémenter création, modification, changement de rôle et suppression contrôlée des collaborateurs (gestion uniquement).
+- [x] Prévoir l'initialisation sécurisée d'un premier compte gestion.
+- [x] Tester validation, unicité, hachage et restrictions.
+- [x] Fiche `docs/revisions/03-collaborateurs.md`.
+Validation : 16 tests validés, premier compte gestion créé dans PostgreSQL et vérifié. Les opérations métier sont protégées par le rôle de l'acteur ; l'authentification de cet acteur et les sessions seront implémentées en J4.
 
 ### J4 — Authentification et autorisation
 Branche : `feat/authentication`
