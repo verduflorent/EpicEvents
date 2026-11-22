@@ -25,16 +25,21 @@ def test_relationships_have_foreign_keys():
     for table_name, targets in expected.items():
         table = Base.metadata.tables[table_name]
         actual = {
-            fk.target_fullname
-            for column in table.columns
-            for fk in column.foreign_keys
+            fk.target_fullname for column in table.columns for fk in column.foreign_keys
         }
         assert actual == targets
 
 
 def test_constraints_protect_contract_amounts_and_event_dates():
     for table_name, expected in (
-        ("contracts", {"ck_contract_total_nonnegative", "ck_contract_remaining_nonnegative", "ck_contract_remaining_lte_total"}),
+        (
+            "contracts",
+            {
+                "ck_contract_total_nonnegative",
+                "ck_contract_remaining_nonnegative",
+                "ck_contract_remaining_lte_total",
+            },
+        ),
         ("events", {"ck_event_attendees_nonnegative", "ck_event_end_after_start"}),
     ):
         constraints = {
