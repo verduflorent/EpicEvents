@@ -96,7 +96,12 @@ def test_duplicate_email_and_self_deletion_rejected(session):
     )
     with pytest.raises(EmployeeError, match="Email already"):
         create_employee(
-            session, manager, "Other", "MANAGER@example.com", "another-password", "support"
+            session,
+            manager,
+            "Other",
+            "MANAGER@example.com",
+            "another-password",
+            "support",
         )
     with pytest.raises(EmployeeError, match="own account"):
         delete_employee(session, manager, manager)
