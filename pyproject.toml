@@ -5,6 +5,7 @@ description = "Secure command-line CRM for Epic Events"
 authors = [{name = "Florent Verdu"}]
 readme = "README.md"
 requires-python = ">=3.10,<4.0"
+dynamic = ["dependencies"]
 
 [project.scripts]
 epicevents = "epicevents.cli:cli"
