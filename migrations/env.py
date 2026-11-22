@@ -3,7 +3,7 @@
 from logging.config import fileConfig
 
 from alembic import context
-from sqlalchemy import engine_from_config, pool
+from sqlalchemy import create_engine, pool
 
 from epicevents.config import database_url
 from epicevents.models import Base
@@ -30,11 +30,8 @@ def run_migrations_offline() -> None:
 
 def run_migrations_online() -> None:
     """Run migrations against the configured database."""
-    configuration = config.get_section(config.config_ini_section, {})
-    configuration["sqlalchemy.url"] = database_url().replace("%", "%%")
-    engine = engine_from_config(
-        configuration, prefix="sqlalchemy.", poolclass=pool.NullPool
-    )
+    # Use the URL directly: ConfigParser can alter percent-encoded passwords.
+    engine = create_engine(database_url(), poolclass=pool.NullPool)
     try:
         with engine.connect() as connection:
             context.configure(
