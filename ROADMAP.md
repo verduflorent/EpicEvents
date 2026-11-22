@@ -6,20 +6,20 @@ Créer une application CRM sécurisée en ligne de commande (Python 3, sans Djan
 ## Méthode de travail
 Pour chaque jalon : (1) préciser le périmètre et les critères d'acceptation, (2) développer et tester sur une branche dédiée, (3) contrôler `git status` et les tests, committer puis fusionner dans `main`, (4) rédiger une fiche de révision dans `docs/revisions/`, (5) actualiser cette roadmap. Les fiches de révision font partie du jalon et doivent être incluses dans le commit ou dans un commit de documentation avant fusion.
 
-## Stack envisagée
-Python 3, Poetry, PostgreSQL, SQLAlchemy, Alembic, Click, Rich, Argon2, pytest, pytest-cov, Sentry, Black/Ruff, Git/GitHub. Choix à valider au jalon 1 ; PostgreSQL et les bibliothèques ne sont pas tous imposés par les sources.
+## Stack retenue pour J1
+Python 3, Poetry, PostgreSQL, SQLAlchemy, Alembic, Click, Rich, Argon2, pytest, pytest-cov, Sentry, Black/Ruff, Git/GitHub. Socle J1 validé : Python 3.10, Poetry, PostgreSQL 17, SQLAlchemy, Click, pytest, Black et Ruff. Alembic, Rich, Argon2 et Sentry seront ajoutés aux jalons correspondants.
 
 ## Jalons
 
 ### J1 — Initialisation et environnement
 Branche : `chore/setup-project`
-- [ ] Créer dépôt GitHub, README initial, `.gitignore`, structure de projet.
-- [ ] Configurer Python, Poetry et dépendances.
-- [ ] Installer/configurer PostgreSQL et un utilisateur non privilégié.
-- [ ] Configurer `.env.example`, variables d'environnement, secrets exclus de Git.
-- [ ] Vérifier la connexion SQLAlchemy à la BDD et ajouter un test de connexion.
-- [ ] Documenter installation et commandes de démarrage.
-- [ ] Fiche `docs/revisions/01-environnement.md`.
+- [x] Créer dépôt GitHub, README initial, `.gitignore`, structure de projet.
+- [x] Configurer Python, Poetry et dépendances.
+- [x] Installer/configurer PostgreSQL et un utilisateur non privilégié.
+- [x] Configurer `.env.example`, variables d'environnement, secrets exclus de Git.
+- [x] Vérifier la connexion SQLAlchemy à la BDD et ajouter un test de connexion.
+- [x] Documenter installation et commandes de démarrage.
+- [x] Fiche `docs/revisions/01-environnement.md`.
 Validation : installation reproductible, connexion fonctionnelle, aucun secret suivi par Git.
 
 ### J2 — Modélisation et migrations
@@ -113,7 +113,7 @@ Validation : dépôt public/partageable, installation documentée et démo repro
 ## Suivi
 | Jalon | Branche | Statut | Commit/PR | Fiche |
 |---|---|---|---|---|
-| J1 | `chore/setup-project` | À faire | — | — |
+| J1 | `chore/setup-project` | Validé localement, fusion à faire | `7ac89cf` + correctifs | `docs/revisions/01-environnement.md` |
 | J2 | `feat/database-models` | À faire | — | — |
 | J3 | `feat/user-management` | À faire | — | — |
 | J4 | `feat/authentication` | À faire | — | — |
