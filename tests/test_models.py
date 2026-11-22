@@ -1,6 +1,6 @@
 """Validate the schema and its relationships without a live database."""
 
-from sqlalchemy import CheckConstraint, ForeignKey
+from sqlalchemy import CheckConstraint
 
 from epicevents.models import Base, Client, Contract, Department, Employee, Event
 
